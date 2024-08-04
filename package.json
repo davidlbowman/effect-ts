@@ -1,12 +1,19 @@
 {
-  "name": "effect-ts",
-  "module": "index.ts",
-  "type": "module",
-  "devDependencies": {
-    "@biomejs/biome": "1.8.3",
-    "@types/bun": "latest"
-  },
-  "peerDependencies": {
-    "typescript": "^5.0.0"
-  }
+	"name": "effect-ts",
+	"module": "index.ts",
+	"type": "module",
+	"scripts": {
+		"apply": "bunx @biomejs/biome check --write ./",
+		"check": "bunx @biomejs/biome check ./"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.8.3",
+		"@types/bun": "latest"
+	},
+	"peerDependencies": {
+		"typescript": "^5.0.0"
+	},
+	"dependencies": {
+		"lefthook": "^1.7.11"
+	}
 }

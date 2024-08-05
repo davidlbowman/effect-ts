@@ -20,6 +20,6 @@ const validationResult = Random.next.pipe(
 	),
 )
 
-const program = Effect.all([httpResult, validationResult]).pipe(
+export const program = Effect.all([httpResult, validationResult]).pipe(
 	Effect.andThen(([http, validation]) => http + validation),
 )

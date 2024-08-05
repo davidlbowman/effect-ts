@@ -1,5 +1,4 @@
 import { Effect, pipe } from "effect"
-import { effect } from "effect/Layer"
 
 const applyDiscount = (
 	total: number,

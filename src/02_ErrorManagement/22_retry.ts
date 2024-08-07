@@ -9,10 +9,21 @@ export const effect = Effect.async<string, Error>((resume) => {
 		resume(Effect.fail(new Error()))
 	} else {
 		console.log("success")
-		resume(Effect.succeed("yay"))
+		resume(Effect.succeed("yay!"))
 	}
 })
 
-const schedule = Schedule.fixed(100)
+// Effect.runPromise(
+// 	Effect.retry(
+// 		effect,
+// 		Schedule.addDelay(Schedule.recurs(5), () => 100),
+// 	),
+// )
 
-Effect.runPromise(Effect.retry(effect, { schedule, times: 5 }))
+const action = Effect.failSync(() => {
+	console.log(`Action called ${++count} time(s)`)
+	return `Error ${count}`
+})
+
+const program = Effect.retry(action, { until: (err) => err === "Error 3" })
+Effect.runPromiseExit(program).then(console.log)
